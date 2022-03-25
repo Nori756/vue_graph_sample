@@ -1,0 +1,44 @@
+<script>
+import { Pie } from "vue-chartjs";
+
+export default {
+  extends: Pie,
+  mounted() {
+    this.gradient = this.$refs.canvas
+      .getContext("2d")
+      .createLinearGradient(0, 0, 0, 450);
+    this.gradient2 = this.$refs.canvas
+      .getContext("2d")
+      .createLinearGradient(0, 0, 0, 450);
+
+    this.gradient.addColorStop(0, "rgba(255, 0,0, 0.5)");
+    this.gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)");
+    this.gradient.addColorStop(1, "rgba(255, 0, 0, 0)");
+    this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
+    this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
+    this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
+    
+    
+    this.axios.get('http://127.0.0.1:8000/piechart/')
+              .then(response => 
+              
+              this.renderChart(
+      {
+        labels: response.data.labels,
+        datasets: [
+          {
+            backgroundColor: [this.gradient, this.gradient2, "#00D8FF"],
+            data: response.data.datasets[0].data
+          }
+        ]
+      },
+      { responsive: true, maintainAspectRatio: false }
+    )
+
+
+         )
+            .catch(error => console.log(error))
+            
+  }
+};
+</script>

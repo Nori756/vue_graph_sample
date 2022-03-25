@@ -1,18 +1,54 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <br>
+    <br>
+    <div>
+    <BarChart/>
+    </div>
+    <br>
+    <br>
+    <LineChart/>
+    <br>
+    <br>
+    <PieChart/>
+    <br>
+    <br>
+    
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import BarChart from "../components/BarChart.vue";
+import LineChart from "../components/LineChart.vue";
+import PieChart from "../components/PieChart.vue";
+
+
 
 export default {
-  name: 'Home',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+   
+    BarChart,
+    PieChart,
+    LineChart,
+ 
+
+   
+  
+  },
+
+  
+};
 </script>
+
+<style>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
